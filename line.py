@@ -14,3 +14,11 @@ def reply(token, payload):
         json={ "replyToken": token, "messages": [payload] }
     )
     return req.json()
+
+def push(to, payload):
+    req = requests.post(
+        f"{LINE_MESSAGING_API}/message/push", 
+        headers=LINE_HEADER, 
+        json={ "to": to, "messages": [payload] }
+    )
+    return req.json()
